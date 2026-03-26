@@ -1,6 +1,7 @@
 package com.iglesia.escuela.vistas.calificaciones;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -25,10 +26,12 @@ public class CalificacionesVista extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        buscarField = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         imprimirButton = new javax.swing.JButton();
         notasButton = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        tipoAlumnoCombo = new javax.swing.JComboBox<>();
+        buscarField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         calificacionesTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -47,9 +50,6 @@ public class CalificacionesVista extends javax.swing.JPanel {
         jLabel2.setPreferredSize(new java.awt.Dimension(60, 40));
         jPanel1.add(jLabel2, java.awt.BorderLayout.LINE_START);
 
-        buscarField.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel1.add(buscarField, java.awt.BorderLayout.CENTER);
-
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
 
         imprimirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
@@ -61,6 +61,18 @@ public class CalificacionesVista extends javax.swing.JPanel {
         jPanel3.add(notasButton);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.LINE_END);
+
+        jPanel4.setPreferredSize(new java.awt.Dimension(150, 100));
+        jPanel4.setLayout(new java.awt.BorderLayout(5, 0));
+
+        tipoAlumnoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adulto", "Menor" }));
+        tipoAlumnoCombo.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel4.add(tipoAlumnoCombo, java.awt.BorderLayout.LINE_END);
+
+        buscarField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel4.add(buscarField, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -117,6 +129,10 @@ public class CalificacionesVista extends javax.swing.JPanel {
     public JButton getNotasButton() {
         return notasButton;
     }
+
+    public JComboBox<String> getTipoAlumnoCombo() {
+        return tipoAlumnoCombo;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscarField;
@@ -128,7 +144,9 @@ public class CalificacionesVista extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton notasButton;
+    private javax.swing.JComboBox<String> tipoAlumnoCombo;
     // End of variables declaration//GEN-END:variables
 }

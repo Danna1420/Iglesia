@@ -4,8 +4,14 @@
  */
 package com.iglesia.escuela.vistas.alumnos;
 
+import com.iglesia.escuela.componentes.PanelFlowCustom;
+import com.toedter.calendar.JDateChooser;
+import java.util.Date;
+import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 /**
@@ -20,6 +26,9 @@ public class EditorAlumnoVista extends javax.swing.JDialog {
     public EditorAlumnoVista(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fechaNacimientoChooser.setLocale(Locale.of("es", "ES"));
+        fechaNacimientoChooser.setMaxSelectableDate(new Date());
+        ((JTextField) fechaNacimientoChooser.getDateEditor().getUiComponent()).setEditable(false);
     }
 
     /**
@@ -31,34 +40,75 @@ public class EditorAlumnoVista extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new PanelFlowCustom(30, 20);
+        jLabel1 = new javax.swing.JLabel();
+        fechaNacimientoLabel = new javax.swing.JLabel();
+        fechaNacimientoChooser = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         nombreField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         apellidoField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        telefonoLabel = new javax.swing.JLabel();
         telefonoField = new javax.swing.JTextField();
+        tallaCamisaLabel = new javax.swing.JLabel();
+        tallaCamisaField = new javax.swing.JTextField();
+        tallaPantalonLabel = new javax.swing.JLabel();
+        tallaPantalonField = new javax.swing.JTextField();
+        tallaZapatosLabel = new javax.swing.JLabel();
+        tallaZapatosField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         materiaCombo = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         GradoCombo = new javax.swing.JComboBox<>();
+        acudienteScrollPane = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        nombreAcudienteField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        apellidoAcudienteField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        telefonoAcudienteField = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        casaOracionField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         GuardarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editor de Alumno");
-        setMaximumSize(new java.awt.Dimension(400, 400));
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(400, 400));
-        setPreferredSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(400, 400));
+        setSize(new java.awt.Dimension(800, 600));
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 62));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 20));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ALUMNO");
+        jLabel1.setPreferredSize(new java.awt.Dimension(650, 30));
+        jPanel1.add(jLabel1);
+
+        fechaNacimientoLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fechaNacimientoLabel.setText("<html><left>Fecha Nacimiento:");
+        fechaNacimientoLabel.setPreferredSize(new java.awt.Dimension(90, 40));
+        jPanel1.add(fechaNacimientoLabel);
+
+        fechaNacimientoChooser.setDateFormatString("yyyy/MM/dd");
+        fechaNacimientoChooser.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel1.add(fechaNacimientoChooser);
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Nombres:");
-        jLabel2.setPreferredSize(new java.awt.Dimension(100, 40));
+        jLabel2.setPreferredSize(new java.awt.Dimension(90, 40));
         jPanel1.add(jLabel2);
 
         nombreField.setPreferredSize(new java.awt.Dimension(200, 40));
@@ -66,23 +116,47 @@ public class EditorAlumnoVista extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Apellidos:");
-        jLabel3.setPreferredSize(new java.awt.Dimension(100, 40));
+        jLabel3.setPreferredSize(new java.awt.Dimension(90, 40));
         jPanel1.add(jLabel3);
 
         apellidoField.setPreferredSize(new java.awt.Dimension(200, 40));
         jPanel1.add(apellidoField);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Telefono:");
-        jLabel4.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel1.add(jLabel4);
+        telefonoLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        telefonoLabel.setText("Telefono:");
+        telefonoLabel.setPreferredSize(new java.awt.Dimension(90, 40));
+        jPanel1.add(telefonoLabel);
 
         telefonoField.setPreferredSize(new java.awt.Dimension(200, 40));
         jPanel1.add(telefonoField);
 
+        tallaCamisaLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tallaCamisaLabel.setText("Talla Camisa:");
+        tallaCamisaLabel.setPreferredSize(new java.awt.Dimension(90, 40));
+        jPanel1.add(tallaCamisaLabel);
+
+        tallaCamisaField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel1.add(tallaCamisaField);
+
+        tallaPantalonLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tallaPantalonLabel.setText("Talla Pantalon:");
+        tallaPantalonLabel.setPreferredSize(new java.awt.Dimension(90, 40));
+        jPanel1.add(tallaPantalonLabel);
+
+        tallaPantalonField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel1.add(tallaPantalonField);
+
+        tallaZapatosLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tallaZapatosLabel.setText("Talla Zapatos:");
+        tallaZapatosLabel.setPreferredSize(new java.awt.Dimension(90, 40));
+        jPanel1.add(tallaZapatosLabel);
+
+        tallaZapatosField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel1.add(tallaZapatosField);
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Materia:");
-        jLabel5.setPreferredSize(new java.awt.Dimension(100, 40));
+        jLabel5.setPreferredSize(new java.awt.Dimension(90, 40));
         jPanel1.add(jLabel5);
 
         materiaCombo.setPreferredSize(new java.awt.Dimension(200, 40));
@@ -90,14 +164,67 @@ public class EditorAlumnoVista extends javax.swing.JDialog {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Grado:");
-        jLabel6.setPreferredSize(new java.awt.Dimension(100, 40));
+        jLabel6.setPreferredSize(new java.awt.Dimension(90, 40));
         jPanel1.add(jLabel6);
 
         GradoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Pasos", "2. Fundamentos I", "3. Fundamentos II", "4. Liderazgo I", "5. Liderazgo II", "6. Liderazgo III", "7. Liderazgo IV", "8. Practicantes" }));
         GradoCombo.setPreferredSize(new java.awt.Dimension(200, 40));
         jPanel1.add(GradoCombo);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        jScrollPane1.setViewportView(jPanel1);
+
+        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        acudienteScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        acudienteScrollPane.setPreferredSize(new java.awt.Dimension(400, 190));
+
+        jPanel4.setMinimumSize(new java.awt.Dimension(0, 62));
+        jPanel4.setPreferredSize(new java.awt.Dimension(400, 190));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 20));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("ACUDIENTE");
+        jLabel12.setPreferredSize(new java.awt.Dimension(650, 30));
+        jPanel4.add(jLabel12);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Nombres:");
+        jLabel7.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel4.add(jLabel7);
+
+        nombreAcudienteField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel4.add(nombreAcudienteField);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("Apellidos:");
+        jLabel8.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel4.add(jLabel8);
+
+        apellidoAcudienteField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel4.add(apellidoAcudienteField);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("Telefono:");
+        jLabel9.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel4.add(jLabel9);
+
+        telefonoAcudienteField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel4.add(telefonoAcudienteField);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("Casa Oración:");
+        jLabel10.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel4.add(jLabel10);
+
+        casaOracionField.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel4.add(casaOracionField);
+
+        acudienteScrollPane.setViewportView(jPanel4);
+
+        jPanel3.add(acudienteScrollPane, java.awt.BorderLayout.PAGE_END);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         GuardarButton.setText("Guardar");
         GuardarButton.setPreferredSize(new java.awt.Dimension(150, 40));
@@ -131,6 +258,62 @@ public class EditorAlumnoVista extends javax.swing.JDialog {
 
     public JTextField getNombreField() {
         return nombreField;
+    }
+
+    public JScrollPane getAcudienteScrollPane() {
+        return acudienteScrollPane;
+    }
+
+    public JTextField getApellidoAcudienteField() {
+        return apellidoAcudienteField;
+    }
+
+    public JTextField getCasaOracionField() {
+        return casaOracionField;
+    }
+
+    public JDateChooser getFechaNacimientoChooser() {
+        return fechaNacimientoChooser;
+    }
+
+    public JLabel getFechaNacimientoLabel() {
+        return fechaNacimientoLabel;
+    }
+
+    public JTextField getNombreAcudienteField() {
+        return nombreAcudienteField;
+    }
+
+    public JTextField getTallaCamisaField() {
+        return tallaCamisaField;
+    }
+    
+    public JLabel getTallaCamisaLabel() {
+        return tallaCamisaLabel;
+    }
+
+    public JTextField getTallaPantalonField() {
+        return tallaPantalonField;
+    }
+
+    public JLabel getTallaPantalonLabel() {
+        return tallaPantalonLabel;
+    }
+
+    public JTextField getTallaZapatosField() {
+        return tallaZapatosField;
+    }
+
+    public JLabel getTallaZapatosLabel() {
+        return tallaZapatosLabel;
+    }
+
+    public JTextField getTelefonoAcudienteField() {
+        return telefonoAcudienteField;
+    }
+
+    public JLabel getTelefonoLabel() {
+        return telefonoLabel;
     }
 
     /**
@@ -178,16 +361,38 @@ public class EditorAlumnoVista extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> GradoCombo;
     private javax.swing.JButton GuardarButton;
+    private javax.swing.JScrollPane acudienteScrollPane;
+    private javax.swing.JTextField apellidoAcudienteField;
     private javax.swing.JTextField apellidoField;
+    private javax.swing.JTextField casaOracionField;
+    private com.toedter.calendar.JDateChooser fechaNacimientoChooser;
+    private javax.swing.JLabel fechaNacimientoLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> materiaCombo;
+    private javax.swing.JTextField nombreAcudienteField;
     private javax.swing.JTextField nombreField;
+    private javax.swing.JTextField tallaCamisaField;
+    private javax.swing.JLabel tallaCamisaLabel;
+    private javax.swing.JTextField tallaPantalonField;
+    private javax.swing.JLabel tallaPantalonLabel;
+    private javax.swing.JTextField tallaZapatosField;
+    private javax.swing.JLabel tallaZapatosLabel;
+    private javax.swing.JTextField telefonoAcudienteField;
     private javax.swing.JTextField telefonoField;
+    private javax.swing.JLabel telefonoLabel;
     // End of variables declaration//GEN-END:variables
 }

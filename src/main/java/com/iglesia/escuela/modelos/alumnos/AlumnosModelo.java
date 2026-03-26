@@ -50,6 +50,18 @@ public class AlumnosModelo {
             alumnoDTO.setGrado((String) alumno.get("grado"));
             alumnoDTO.setTelefono((String) alumno.get("telefono"));
             alumnoDTO.setMateria((String) alumno.get("id_curso_asignado"));
+
+            java.sql.Date fechaNacimiento = (java.sql.Date) alumno.get("fecha_nacimiento");
+            if (fechaNacimiento != null) alumnoDTO.setFechaNacimiento(fechaNacimiento.toLocalDate());
+
+            alumnoDTO.setTallaCamisa((Integer) alumno.get("talla_camisa"));
+            alumnoDTO.setTallaPantalon((Integer) alumno.get("talla_pantalon"));
+            alumnoDTO.setTallaZapato((Integer) alumno.get("talla_zapato"));
+
+            alumnoDTO.setNombreAcudiente((String) alumno.get("nombre_acudiente"));
+            alumnoDTO.setApellidoAcudiente((String) alumno.get("apellido_acudiente"));
+            alumnoDTO.setTelefonoAcudiente((String) alumno.get("telefono_acudiente"));
+            alumnoDTO.setCasaOracionAcudiente((String) alumno.get("casa_oracion_acudiente"));
             alumnoDTOList.add(alumnoDTO);
         }
         return alumnoDTOList;
@@ -62,8 +74,18 @@ public class AlumnosModelo {
 
     private String getSql(boolean esNuevo) {
         return esNuevo
-                ? "INSERT INTO alumnos (nombre, apellido, grado, telefono, id_curso_asignado) VALUES (?, ?, ?, ?, ?)"
-                : "UPDATE alumnos SET nombre = ?, apellido = ?, grado = ?, telefono = ?, id_curso_asignado = ? WHERE id_alumno = ?";
+                ? """
+                INSERT INTO alumnos (nombre, apellido, grado, telefono, id_curso_asignado, fecha_nacimiento,
+                talla_camisa, talla_pantalon, talla_zapato, nombre_acudiente, apellido_acudiente, telefono_acudiente,
+                casa_oracion_acudiente)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """
+                : """
+                UPDATE alumnos SET nombre = ?, apellido = ?, grado = ?, telefono = ?, id_curso_asignado = ?,
+                fecha_nacimiento = ?, talla_camisa = ?, talla_pantalon = ?, talla_zapato = ?, nombre_acudiente = ?,
+                apellido_acudiente = ?, telefono_acudiente = ?, casa_oracion_acudiente = ?
+                WHERE id_alumno = ?
+                """;
     }
 
     private Object[] getParametros(AlumnoDTO alumnoDTO, boolean esNuevo) {
@@ -73,6 +95,15 @@ public class AlumnosModelo {
         parametros.add(alumnoDTO.getGrado());
         parametros.add(alumnoDTO.getTelefono());
         parametros.add(alumnoDTO.getMateria());
+        parametros.add(alumnoDTO.getFechaNacimiento());
+        parametros.add(alumnoDTO.getTallaCamisa());
+        parametros.add(alumnoDTO.getTallaPantalon());
+        parametros.add(alumnoDTO.getTallaZapato());
+
+        parametros.add(alumnoDTO.getNombreAcudiente());
+        parametros.add(alumnoDTO.getApellidoAcudiente());
+        parametros.add(alumnoDTO.getTelefonoAcudiente());
+        parametros.add(alumnoDTO.getCasaOracionAcudiente());
 
         if (!esNuevo) {
             parametros.add(alumnoDTO.getId());

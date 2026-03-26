@@ -6,6 +6,8 @@ import com.iglesia.escuela.controladores.base.BaseControlador;
 import com.iglesia.escuela.controladores.calificaciones.CalificacionesControlador;
 import com.iglesia.escuela.controladores.cursos.CursosControlador;
 import com.iglesia.escuela.controladores.iniciosesion.InicioSesionControlador;
+import com.iglesia.escuela.controladores.usuarios.UsuariosControlador;
+import com.iglesia.escuela.dtos.usuarios.UsuarioDTO;
 import com.iglesia.escuela.vistas.principal.PrincipalVista;
 
 import java.awt.*;
@@ -13,6 +15,8 @@ import java.awt.*;
 public class PrincipalControlador extends BaseControlador {
 
     private final PrincipalVista principalVista;
+
+    public static UsuarioDTO usuarioSesionDTO;
 
     public PrincipalControlador() {
         this.principalVista = new PrincipalVista();
@@ -25,6 +29,11 @@ public class PrincipalControlador extends BaseControlador {
         principalVista.getCursosButton().addActionListener(e -> setContenidoPanel(new CursosControlador()));
         principalVista.getCalificacionesButton().addActionListener(e -> setContenidoPanel(new CalificacionesControlador()));
         principalVista.getAsistenciasButton().addActionListener(e -> setContenidoPanel(new AsistenciaControlador()));
+
+        if ("Administrador".equals(usuarioSesionDTO.getTipoNivel())) {
+            principalVista.getUsuariosButton().addActionListener(e -> setContenidoPanel(new UsuariosControlador()));
+        } else principalVista.getUsuariosButton().setVisible(false);
+
         principalVista.getSalirButton().addActionListener(e -> salir());
     }
 
@@ -41,6 +50,7 @@ public class PrincipalControlador extends BaseControlador {
     }
 
     private void salir() {
+        usuarioSesionDTO = null;
         principalVista.dispose();
         InicioSesionControlador inicioSesionControlador = new InicioSesionControlador();
         inicioSesionControlador.getVista().setVisible(true);

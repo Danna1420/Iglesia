@@ -24,9 +24,9 @@ public class DataSource {
     }
 
     private Connection crearConexion() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/escuela";
+        String url = "jdbc:mysql://localhost:3307/escuela";
         String usuario = "root";
-        String contrasena = "2303";
+        String contrasena = "3InterPOS2069564@#";
         return DriverManager.getConnection(url, usuario, contrasena);
     }
 

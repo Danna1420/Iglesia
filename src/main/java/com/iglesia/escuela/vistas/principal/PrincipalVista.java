@@ -32,6 +32,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        usuariosButton = new javax.swing.JButton();
         alumnosButton = new javax.swing.JButton();
         cursosButton = new javax.swing.JButton();
         calificacionesButton = new javax.swing.JButton();
@@ -56,6 +57,11 @@ public class PrincipalVista extends javax.swing.JFrame {
 
         jPanel3.setForeground(new java.awt.Color(0, 153, 255));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
+
+        usuariosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nota.png"))); // NOI18N
+        usuariosButton.setText("Usuarios");
+        usuariosButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        jPanel3.add(usuariosButton);
 
         alumnosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alumnos.png"))); // NOI18N
         alumnosButton.setText("Alumnos");
@@ -122,6 +128,10 @@ public class PrincipalVista extends javax.swing.JFrame {
         return salirButton;
     }
 
+    public JButton getUsuariosButton() {
+        return usuariosButton;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -169,5 +179,6 @@ public class PrincipalVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton salirButton;
+    private javax.swing.JButton usuariosButton;
     // End of variables declaration//GEN-END:variables
 }

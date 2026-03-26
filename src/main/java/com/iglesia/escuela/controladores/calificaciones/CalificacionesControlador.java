@@ -2,15 +2,11 @@ package com.iglesia.escuela.controladores.calificaciones;
 
 import com.iglesia.escuela.alertas.Alertas;
 import com.iglesia.escuela.controladores.base.BaseControlador;
+import com.iglesia.escuela.dtos.alumnos.AlumnoDTO;
 import com.iglesia.escuela.dtos.calificaciones.CalificacionDTO;
 import com.iglesia.escuela.modelos.calificaciones.CalificacionesModelo;
 import com.iglesia.escuela.vistas.calificaciones.CalificacionesVista;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -21,6 +17,7 @@ import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
+import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,8 +25,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
+import static com.iglesia.escuela.controladores.alumnos.EditorAlumnoControlador.esMayorDeEdad;
 
 public class CalificacionesControlador extends BaseControlador {
 
@@ -124,16 +124,35 @@ public class CalificacionesControlador extends BaseControlador {
             public void changedUpdate(DocumentEvent e) {
 
             }
-
-            private void filtrar() {
-                String filtro = calificacionesVista.getBuscarField().getText();
-                if (filtro.isBlank()) {
-                    return;
-                }
-
-                sorterTabla.setRowFilter(RowFilter.regexFilter("(?i)" + filtro));
-            }
         });
+
+        calificacionesVista.getTipoAlumnoCombo().addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) filtrar();
+        });
+    }
+
+    private void filtrar() {
+        String filtro = calificacionesVista.getBuscarField().getText().toUpperCase();
+        String tipoAlumno = (String) calificacionesVista.getTipoAlumnoCombo().getSelectedItem();
+
+        RowFilter<Object, Object> filtroTexto = RowFilter.regexFilter("(?i)" + filtro);
+
+        RowFilter<Object, Object> filtroTipo = new RowFilter<>() {
+            @Override
+            public boolean include(Entry<?, ?> entry) {
+                CalificacionDTO calificacionDTO = calificacionDTOList.get((Integer) entry.getIdentifier());
+                AlumnoDTO dto = calificacionDTO.getAlumnoDTO();
+
+                if ("Adulto".equals(tipoAlumno)) {
+                    return esMayorDeEdad(dto.getFechaNacimiento());
+                } else if ("Menor".equals(tipoAlumno)) {
+                    return !esMayorDeEdad(dto.getFechaNacimiento());
+                }
+                return true; // "Todos"
+            }
+        };
+
+        sorterTabla.setRowFilter(RowFilter.andFilter(Arrays.asList(filtroTexto, filtroTipo)));
     }
 
     private void mostrarEditorCalificaciones() {

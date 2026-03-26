@@ -3,7 +3,7 @@ package com.iglesia.escuela.controladores.iniciosesion;
 import com.iglesia.escuela.alertas.Alertas;
 import com.iglesia.escuela.controladores.base.BaseControlador;
 import com.iglesia.escuela.controladores.principal.PrincipalControlador;
-import com.iglesia.escuela.modelos.iniciosesion.InicioSesionModel;
+import com.iglesia.escuela.modelos.usuarios.UsuariosModelo;
 import com.iglesia.escuela.vistas.iniciosesion.InicioSesionVista;
 
 import javax.swing.*;
@@ -11,15 +11,17 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.iglesia.escuela.controladores.principal.PrincipalControlador.usuarioSesionDTO;
+
 public class InicioSesionControlador extends BaseControlador {
 
     private final InicioSesionVista inicioSesionVista;
 
-    private final InicioSesionModel inicioSesionModel;
+    private final UsuariosModelo usuariosModelo;
 
     public InicioSesionControlador() {
         this.inicioSesionVista = new InicioSesionVista();
-        this.inicioSesionModel = new InicioSesionModel();
+        this.usuariosModelo = new UsuariosModelo();
         iniciarEventos();
     }
 
@@ -33,10 +35,10 @@ public class InicioSesionControlador extends BaseControlador {
             return;
         }
 
-        boolean valido = inicioSesionModel.ingresar(inicioSesionVista.getUsuarioField().getText(),
+        usuarioSesionDTO = usuariosModelo.ingresar(inicioSesionVista.getUsuarioField().getText(),
                 new String(inicioSesionVista.getContrasenaField().getPassword()));
 
-        if (!valido) {
+        if (usuarioSesionDTO == null) {
             Alertas.error("Usuario o contraseña incorrectos");
             return;
         }

@@ -1,17 +1,16 @@
-package com.iglesia.escuela.vistas.alumnos;
+package com.iglesia.escuela.vistas.usuarios;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class AlumnosVista extends javax.swing.JPanel {
+public class UsuariosVista extends javax.swing.JPanel {
 
     /**
      * Creates new form alumnosVista
      */
-    public AlumnosVista() {
+    public UsuariosVista() {
         initComponents();
     }
 
@@ -25,17 +24,13 @@ public class AlumnosVista extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        tipoAlumnoCombo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         buscarField = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        imprimirButton = new javax.swing.JButton();
-        excelButton = new javax.swing.JButton();
         agregarButton = new javax.swing.JButton();
         actualizarButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        alumnosTable = new javax.swing.JTable();
+        usuariosTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         cantidadLabel = new javax.swing.JLabel();
@@ -47,27 +42,15 @@ public class AlumnosVista extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 50));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(150, 100));
-        jPanel4.setLayout(new java.awt.BorderLayout(5, 0));
-
-        tipoAlumnoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adulto", "Menor" }));
-        tipoAlumnoCombo.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel4.add(tipoAlumnoCombo, java.awt.BorderLayout.LINE_END);
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Buscar:");
+        jLabel2.setPreferredSize(new java.awt.Dimension(60, 40));
+        jPanel1.add(jLabel2, java.awt.BorderLayout.LINE_START);
 
         buscarField.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel4.add(buscarField, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
+        jPanel1.add(buscarField, java.awt.BorderLayout.CENTER);
 
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
-
-        imprimirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
-        imprimirButton.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanel3.add(imprimirButton);
-
-        excelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
-        excelButton.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanel3.add(excelButton);
 
         agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
         agregarButton.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -79,15 +62,10 @@ public class AlumnosVista extends javax.swing.JPanel {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.LINE_END);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Buscar:");
-        jLabel2.setPreferredSize(new java.awt.Dimension(60, 40));
-        jPanel1.add(jLabel2, java.awt.BorderLayout.LINE_START);
-
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        alumnosTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        alumnosTable.setModel(new javax.swing.table.DefaultTableModel(
+        usuariosTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        usuariosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -98,8 +76,8 @@ public class AlumnosVista extends javax.swing.JPanel {
 
             }
         ));
-        alumnosTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(alumnosTable);
+        usuariosTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(usuariosTable);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -120,8 +98,8 @@ public class AlumnosVista extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JTable getAlumnosTable() {
-        return alumnosTable;
+    public JTable getUsuariosTable() {
+        return usuariosTable;
     }
 
     public JTextField getBuscarField() {
@@ -139,38 +117,18 @@ public class AlumnosVista extends javax.swing.JPanel {
     public JButton getAgregarButton() {
         return agregarButton;
     }
-
-    public JButton getExcelButton() {
-        return excelButton;
-    }
-
-    public JComboBox<String> getTipoAlumnoCombo() {
-        return tipoAlumnoCombo;
-    }
-
-    public void setTipoAlumnoCombo(JComboBox<String> tipoAlumnoCombo) {
-        this.tipoAlumnoCombo = tipoAlumnoCombo;
-    }
-
-    public JButton getImprimirButton() {
-        return imprimirButton;
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarButton;
     private javax.swing.JButton agregarButton;
-    private javax.swing.JTable alumnosTable;
     private javax.swing.JTextField buscarField;
     private javax.swing.JLabel cantidadLabel;
-    private javax.swing.JButton excelButton;
-    private javax.swing.JButton imprimirButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> tipoAlumnoCombo;
+    private javax.swing.JTable usuariosTable;
     // End of variables declaration//GEN-END:variables
 }

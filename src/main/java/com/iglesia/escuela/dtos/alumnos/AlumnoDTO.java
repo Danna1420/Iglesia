@@ -1,5 +1,7 @@
 package com.iglesia.escuela.dtos.alumnos;
 
+import java.time.LocalDate;
+
 public class AlumnoDTO {
 
     private Integer id;
@@ -13,6 +15,22 @@ public class AlumnoDTO {
     private String materia;
 
     private String grado;
+
+    private LocalDate fechaNacimiento;
+
+    private int tallaCamisa;
+
+    private int tallaPantalon;
+
+    private int tallaZapato;
+
+    private String nombreAcudiente;
+
+    private String apellidoAcudiente;
+
+    private String telefonoAcudiente;
+
+    private String casaOracionAcudiente;
 
     public Integer getId() {
         return id;
@@ -60,6 +78,70 @@ public class AlumnoDTO {
 
     public void setGrado(String grado) {
         this.grado = grado;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int getTallaCamisa() {
+        return tallaCamisa;
+    }
+
+    public void setTallaCamisa(int tallaCamisa) {
+        this.tallaCamisa = tallaCamisa;
+    }
+
+    public int getTallaPantalon() {
+        return tallaPantalon;
+    }
+
+    public void setTallaPantalon(int tallaPantalon) {
+        this.tallaPantalon = tallaPantalon;
+    }
+
+    public int getTallaZapato() {
+        return tallaZapato;
+    }
+
+    public void setTallaZapato(int tallaZapato) {
+        this.tallaZapato = tallaZapato;
+    }
+
+    public String getNombreAcudiente() {
+        return nombreAcudiente;
+    }
+
+    public void setNombreAcudiente(String nombreAcudiente) {
+        this.nombreAcudiente = nombreAcudiente;
+    }
+
+    public String getApellidoAcudiente() {
+        return apellidoAcudiente;
+    }
+
+    public void setApellidoAcudiente(String apellidoAcudiente) {
+        this.apellidoAcudiente = apellidoAcudiente;
+    }
+
+    public String getTelefonoAcudiente() {
+        return telefonoAcudiente;
+    }
+
+    public void setTelefonoAcudiente(String telefonoAcudiente) {
+        this.telefonoAcudiente = telefonoAcudiente;
+    }
+
+    public String getCasaOracionAcudiente() {
+        return casaOracionAcudiente;
+    }
+
+    public void setCasaOracionAcudiente(String casaOracionAcudiente) {
+        this.casaOracionAcudiente = casaOracionAcudiente;
     }
 
     @Override

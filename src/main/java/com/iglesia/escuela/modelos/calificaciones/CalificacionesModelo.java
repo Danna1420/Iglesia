@@ -27,6 +27,7 @@ public class CalificacionesModelo {
                     alumnos.apellido,
                     alumnos.grado,
                     alumnos.id_curso_asignado AS curso,
+                    alumnos.fecha_nacimiento,
                     COALESCE(SUM(notas.calificacion), 0) AS totalCalificaion,
                     COUNT(notas.calificacion) AS numCalificaciones
                  FROM alumnos
@@ -45,6 +46,9 @@ public class CalificacionesModelo {
             alumnoDTO.setGrado((String) calificacion.get("grado"));
             alumnoDTO.setTelefono((String) calificacion.get("telefono"));
             alumnoDTO.setMateria((String) calificacion.get("curso"));
+
+            java.sql.Date fechaNacimiento = (java.sql.Date) calificacion.get("fecha_nacimiento");
+            if (fechaNacimiento != null) alumnoDTO.setFechaNacimiento(fechaNacimiento.toLocalDate());
 
             calificacionDTO.setAlumnoDTO(alumnoDTO);
             calificacionDTO.setTotalCalificaciones((BigDecimal) calificacion.get("totalCalificaion"));
