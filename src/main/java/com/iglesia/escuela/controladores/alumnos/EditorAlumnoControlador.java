@@ -90,9 +90,11 @@ public class EditorAlumnoControlador extends BaseControlador {
         Map<String, JTextField> textFieldMap = new LinkedHashMap<>();
         textFieldMap.put("Nombre", editorAlumnoVista.getNombreField());
         textFieldMap.put("Apellido", editorAlumnoVista.getApellidoField());
-        textFieldMap.put("Teléfono", editorAlumnoVista.getTelefonoField());
 
-        if (!esMayorDeEdad(getFechaNacimiento())) {
+        boolean esMayorDeEdad = esMayorDeEdad(getFechaNacimiento());
+        if (esMayorDeEdad) textFieldMap.put("Teléfono", editorAlumnoVista.getTelefonoField());
+
+        if (!esMayorDeEdad) {
             textFieldMap.put("Talla Camisa", editorAlumnoVista.getTallaCamisaField());
             textFieldMap.put("Talla Pantalón", editorAlumnoVista.getTallaPantalonField());
             textFieldMap.put("Talla Zapatos", editorAlumnoVista.getTallaZapatosField());
